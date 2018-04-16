@@ -9,22 +9,262 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="control.studio.com.control.MainActivity">
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/alarmeID"
-        android:background="@drawable/sirenvermelha"
-        android:layout_alignParentBottom="true"
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="80dp" />
+        android:orientation="horizontal"
+        android:layout_gravity="center">
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/motoresID"
-        android:background="@drawable/engrenagem"
-        android:layout_above="@+id/alarmeID"
-        android:layout_alignLeft="@+id/alarmeID"
-        android:layout_alignStart="@+id/alarmeID"
-        android:layout_marginBottom="97dp" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:layout_margin="10dp"
+            android:layout_marginRight="5dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:id="@+id/imageView"
+                android:background="@drawable/redswitch"
+                android:layout_column="0"
+                android:layout_weight="0"
+                android:adjustViewBounds="false"
+                android:foregroundGravity="center_vertical|center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="25dp" />
+
+            <Space
+                android:layout_width="50px"
+                android:layout_height="50px"
+                android:layout_gravity="center_vertical" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:id="@+id/imageView2"
+                android:background="@drawable/redswitch"
+                android:layout_column="0"
+                android:layout_weight="0"
+                android:adjustViewBounds="false"
+                android:foregroundGravity="center_vertical|center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="25dp" />
+
+            <Space
+                android:layout_width="50px"
+                android:layout_height="50px"
+                android:layout_gravity="center_vertical" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:id="@+id/imageView3"
+                android:background="@drawable/redswitch"
+                android:layout_column="0"
+                android:layout_weight="0"
+                android:adjustViewBounds="false"
+                android:foregroundGravity="center_vertical|center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="25dp" />
+
+            <Space
+                android:layout_width="50px"
+                android:layout_height="50px"
+                android:layout_gravity="center_vertical" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:id="@+id/imageView4"
+                android:background="@drawable/redswitch"
+                android:layout_column="0"
+                android:layout_weight="0"
+                android:adjustViewBounds="false"
+                android:foregroundGravity="center_vertical|center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="25dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/CimaAid"
+                android:background="@drawable/cimaazul" />
+
+            <Space
+                android:layout_width="50px"
+                android:layout_height="50px"
+                android:layout_gravity="center_vertical" />
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/imageView6"
+                android:background="@drawable/cimavermelho" />
+
+            <Space
+                android:layout_width="50px"
+                android:layout_height="50px"
+                android:layout_gravity="center_vertical" />
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/imageView7"
+                android:background="@drawable/cimapreto" />
+
+            <Space
+                android:layout_width="50px"
+                android:layout_height="50px"
+                android:layout_gravity="center_vertical" />
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/imageView8"
+                android:background="@drawable/cimaroxo" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <Space
+                android:layout_width="20px"
+                android:layout_height="20px" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/imageView9"
+                android:background="@drawable/baixoazul" />
+
+            <Space
+                android:layout_width="50px"
+                android:layout_height="50px"
+                android:layout_gravity="center_vertical" />
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/imageView10"
+                android:background="@drawable/baixovermelho" />
+
+            <Space
+                android:layout_width="50px"
+                android:layout_height="50px"
+                android:layout_gravity="center_vertical" />
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/imageView11"
+                android:background="@drawable/baixopreto" />
+
+            <Space
+                android:layout_width="50px"
+                android:layout_height="50px"
+                android:layout_gravity="center_vertical" />
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/imageView12"
+                android:background="@drawable/baixoroxo" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:layout_margin="10dp" >
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:id="@+id/imageView13"
+                android:background="@drawable/redswitch"
+                android:layout_column="0"
+                android:layout_weight="0"
+                android:adjustViewBounds="false"
+                android:foregroundGravity="center_vertical|center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="25dp" />
+
+            <Space
+                android:layout_width="50px"
+                android:layout_height="50px"
+                android:layout_gravity="center_vertical" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:id="@+id/imageView14"
+                android:background="@drawable/redswitch"
+                android:layout_column="0"
+                android:layout_weight="0"
+                android:adjustViewBounds="false"
+                android:foregroundGravity="center_vertical|center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="25dp" />
+
+            <Space
+                android:layout_width="50px"
+                android:layout_height="50px"
+                android:layout_gravity="center_vertical" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:id="@+id/imageView15"
+                android:background="@drawable/redswitch"
+                android:layout_column="0"
+                android:layout_weight="0"
+                android:adjustViewBounds="false"
+                android:foregroundGravity="center_vertical|center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="25dp" />
+
+            <Space
+                android:layout_width="50px"
+                android:layout_height="50px"
+                android:layout_gravity="center_vertical" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:id="@+id/imageView16"
+                android:background="@drawable/redswitch"
+                android:layout_column="0"
+                android:layout_weight="0"
+                android:adjustViewBounds="false"
+                android:foregroundGravity="center_vertical|center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="25dp" />
+        </TableRow>
+
+    </TableLayout>
 </RelativeLayout>

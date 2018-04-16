@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.NotificationCompat;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -25,6 +26,16 @@ import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import java.io.UnsupportedEncodingException;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.util.Log;
+import android.view.View;
+
 public class MainActivity extends AppCompatActivity {
 
     // Declarações de Campos EditText
@@ -40,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     static boolean assinou = false;
     private ImageView botaoMotores;
     private ImageView botaoAlarme;
+    public ImageView botaoCimaA;
     static String passaMensagem;
 
     public MqttCallback ClientCallBack = new MqttCallback() {
@@ -99,30 +111,50 @@ public class MainActivity extends AppCompatActivity {
         connectMQTT();
         //startNotifications();
 
+//------------------------------------------------------
+//tentativa de clicar um botao que ao clicar manda o comando de ligar, ao solta-lo manda o comando de desligar
+        botaoCimaA = (ImageView) findViewById(R.id.CimaAid);
 
-
-
-        botaoMotores = (ImageView) findViewById(R.id.motoresID);
-        botaoAlarme = (ImageView) findViewById(R.id.alarmeID);
-
-        botaoMotores.setOnClickListener(new View.OnClickListener() {
+        botaoCimaA.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
-                //startActivity(new Intent(MainActivity.this, MotoresActivity.class));
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
 
-                Intent intent = new Intent(MainActivity.this, MotoresActivity.class);
-                intent.putExtra("nome", passaMensagem + " Amperes");
-                startActivity(intent);
-            }
 
-        });
+                    //CHAMAR COMANDO MQTT DE LIGAR
+                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_LONG).show();
 
-        botaoAlarme.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, AlarmeActivity.class));
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    //CHAMAR COMANDO MQTT DE DESLIGAR
+                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_LONG).show();
+                }
+                return true;
             }
         });
+
+//------------------------------------------------------
+
+//        botaoMotores = (ImageView) findViewById(R.id.motoresID);
+//        botaoAlarme = (ImageView) findViewById(R.id.alarmeID);
+//
+//        botaoMotores.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //startActivity(new Intent(MainActivity.this, MotoresActivity.class));
+//
+//                Intent intent = new Intent(MainActivity.this, MotoresActivity.class);
+//                intent.putExtra("nome", passaMensagem + " Amperes");
+//                startActivity(intent);
+//            }
+//
+//        });
+//
+//        botaoAlarme.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(MainActivity.this, AlarmeActivity.class));
+//            }
+//        });
 
     }
 
