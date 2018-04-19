@@ -15,10 +15,10 @@
         android:orientation="horizontal"
         android:layout_gravity="center"
         android:id="@+id/tableLayout"
-        android:layout_marginTop="28dp"
-        android:layout_below="@+id/correnteID"
+        android:layout_above="@+id/AlarmeID"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true">
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="44dp">
 
 
         <TableRow
@@ -276,8 +276,38 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
         android:id="@+id/correnteID"
         android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/AlarmeID"
+        android:layout_alignEnd="@+id/AlarmeID" />
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New ToggleButton"
+        android:id="@+id/ExtraID"
+        android:textOn="Extra On"
+        android:textOff="Extra Off"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:id="@+id/AlarmeID"
+        android:background="@drawable/sirenvermelha"
+        android:layout_above="@+id/ExtraID"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="57dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Amper"
+        android:id="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/correnteID"
+        android:layout_toEndOf="@+id/correnteID" />
+
 </RelativeLayout>

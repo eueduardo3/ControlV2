@@ -10,6 +10,7 @@ import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -60,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
     public ImageView botaoBaixoC;
     public ImageView botaoBaixoD;
     public TextView texto;
-
+    public ImageView Alarme;
+    public ImageView Extra;
 
     static String passaMensagem;
 
@@ -133,8 +135,8 @@ public class MainActivity extends AppCompatActivity {
         botaoBaixoB = (ImageView) findViewById(R.id.BaixoBid);
         botaoBaixoC = (ImageView) findViewById(R.id.BaixoCid);
         botaoBaixoD = (ImageView) findViewById(R.id.BaixoDid);
-
-
+        Alarme = (ImageView) findViewById(R.id.AlarmeID);
+        Extra = (ImageView) findViewById(R.id.ExtraID);
 
 
         botaoCimaA.setOnTouchListener(new View.OnTouchListener() {
@@ -276,6 +278,24 @@ public class MainActivity extends AppCompatActivity {
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     //CHAMAR COMANDO MQTT DE DESLIGAR
                     MotoresActivity.botaocima("DbD");
+                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_LONG).show();
+                }
+                return true;
+            }
+        });
+
+        Alarme.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+
+
+                    //CHAMAR COMANDO MQTT DE LIGAR
+                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_LONG).show();
+                    MotoresActivity.botaocima("alarmL");
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    //CHAMAR COMANDO MQTT DE DESLIGAR
+                    MotoresActivity.botaocima("alarmD");
                     Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_LONG).show();
                 }
                 return true;
