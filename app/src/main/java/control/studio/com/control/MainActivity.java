@@ -52,6 +52,16 @@ public class MainActivity extends AppCompatActivity {
     private ImageView botaoMotores;
     private ImageView botaoAlarme;
     public ImageView botaoCimaA;
+    public ImageView botaoCimaB;
+    public ImageView botaoCimaC;
+    public ImageView botaoCimaD;
+    public ImageView botaoBaixoA;
+    public ImageView botaoBaixoB;
+    public ImageView botaoBaixoC;
+    public ImageView botaoBaixoD;
+    public TextView texto;
+
+
     static String passaMensagem;
 
     public MqttCallback ClientCallBack = new MqttCallback() {
@@ -69,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
 
                 passaMensagem= new String(message.getPayload());
                 Log.d(TAG, topic + ": " + passaMensagem);
+                AtualizaTextoCorrente(passaMensagem);
+
 
             }
         }
@@ -114,6 +126,16 @@ public class MainActivity extends AppCompatActivity {
 //------------------------------------------------------
 //tentativa de clicar um botao que ao clicar manda o comando de ligar, ao solta-lo manda o comando de desligar
         botaoCimaA = (ImageView) findViewById(R.id.CimaAid);
+        botaoCimaB = (ImageView) findViewById(R.id.CimaBid);
+        botaoCimaC = (ImageView) findViewById(R.id.CimaCid);
+        botaoCimaD = (ImageView) findViewById(R.id.CimaDid);
+        botaoBaixoA = (ImageView) findViewById(R.id.BaixoAid);
+        botaoBaixoB = (ImageView) findViewById(R.id.BaixoBid);
+        botaoBaixoC = (ImageView) findViewById(R.id.BaixoCid);
+        botaoBaixoD = (ImageView) findViewById(R.id.BaixoDid);
+
+
+
 
         botaoCimaA.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -123,14 +145,143 @@ public class MainActivity extends AppCompatActivity {
 
                     //CHAMAR COMANDO MQTT DE LIGAR
                     Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_LONG).show();
-
+                    MotoresActivity.botaocima("AcL");
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     //CHAMAR COMANDO MQTT DE DESLIGAR
+                    MotoresActivity.botaocima("AcD");
                     Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_LONG).show();
                 }
                 return true;
             }
         });
+
+        botaoCimaB.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+
+
+                    //CHAMAR COMANDO MQTT DE LIGAR
+                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_LONG).show();
+                    MotoresActivity.botaocima("BcL");
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    //CHAMAR COMANDO MQTT DE DESLIGAR
+                    MotoresActivity.botaocima("BcD");
+                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_LONG).show();
+                }
+                return true;
+            }
+        });
+
+        botaoCimaC.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+
+
+                    //CHAMAR COMANDO MQTT DE LIGAR
+                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_LONG).show();
+                    MotoresActivity.botaocima("CcL");
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    //CHAMAR COMANDO MQTT DE DESLIGAR
+                    MotoresActivity.botaocima("CcD");
+                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_LONG).show();
+                }
+                return true;
+            }
+        });
+
+        botaoCimaD.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+
+
+                    //CHAMAR COMANDO MQTT DE LIGAR
+                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_LONG).show();
+                    MotoresActivity.botaocima("DcL");
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    //CHAMAR COMANDO MQTT DE DESLIGAR
+                    MotoresActivity.botaocima("DcD");
+                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_LONG).show();
+                }
+                return true;
+            }
+        });
+
+        //------------
+        botaoBaixoA.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+
+
+                    //CHAMAR COMANDO MQTT DE LIGAR
+                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_LONG).show();
+                    MotoresActivity.botaocima("AbL");
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    //CHAMAR COMANDO MQTT DE DESLIGAR
+                    MotoresActivity.botaocima("AbD");
+                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_LONG).show();
+                }
+                return true;
+            }
+        });
+
+        botaoBaixoB.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+
+
+                    //CHAMAR COMANDO MQTT DE LIGAR
+                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_LONG).show();
+                    MotoresActivity.botaocima("BbL");
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    //CHAMAR COMANDO MQTT DE DESLIGAR
+                    MotoresActivity.botaocima("BbD");
+                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_LONG).show();
+                }
+                return true;
+            }
+        });
+
+        botaoBaixoC.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+
+
+                    //CHAMAR COMANDO MQTT DE LIGAR
+                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_LONG).show();
+                    MotoresActivity.botaocima("CbL");
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    //CHAMAR COMANDO MQTT DE DESLIGAR
+                    MotoresActivity.botaocima("CbD");
+                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_LONG).show();
+                }
+                return true;
+            }
+        });
+
+        botaoBaixoD.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+
+
+                    //CHAMAR COMANDO MQTT DE LIGAR
+                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_LONG).show();
+                    MotoresActivity.botaocima("DbL");
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    //CHAMAR COMANDO MQTT DE DESLIGAR
+                    MotoresActivity.botaocima("DbD");
+                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_LONG).show();
+                }
+                return true;
+            }
+        });
+
 
 //------------------------------------------------------
 
@@ -238,6 +389,11 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+    }
+
+    public void AtualizaTextoCorrente(String passaMensagem) {
+        texto = (TextView) findViewById(R.id.correnteID);
+        texto.setText(MainActivity.passaMensagem);
     }
 
 
