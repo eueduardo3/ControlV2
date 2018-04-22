@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.TaskStackBuilder;
 import android.content.Intent;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.NotificationCompat;
@@ -64,9 +65,16 @@ public class MainActivity extends AppCompatActivity {
     public ImageView botaoBaixoD;
     public TextView texto;
     public ImageView Alarme;
-    public ImageView Extra;
-private ToggleButton toggleButton;
+    public ImageView botaoExtra;
+    private ToggleButton toggleButton;
+    private ToggleButton toggleButtonAlarme;
     static String passaMensagem;
+    public ImageView Reed1;
+    public ImageView Reed2;
+    public ImageView Reed3;
+    public ImageView Reed4;
+    public ImageView Reed5;
+    public ImageView Reed6;
 
     public MqttCallback ClientCallBack = new MqttCallback() {
         @Override
@@ -79,13 +87,74 @@ private ToggleButton toggleButton;
         @Override
         public void messageArrived(String topic, MqttMessage message) throws Exception {
 
-            if (topic.equals("/Umidade")) { // Apresentada graficamente
+            if (topic.equals("eueduardoCorrente")) { // Apresentada graficamente
 
                 passaMensagem= new String(message.getPayload());
                 Log.d(TAG, topic + ": " + passaMensagem);
                 AtualizaTextoCorrente(passaMensagem);
+            }
+            if (topic.equals("eueduardoReed1")) { // Apresentada graficamente
 
+                String Reed1 = new String(message.getPayload());
 
+                if(Reed1.equals("um")){
+                    Log.d(TAG, topic + ": " + Reed1 + "Reed1 ativo");
+                ExibeReed(true,1);
+                }else if(Reed1.equals("zero")){
+                    Log.d(TAG, topic + ": " + Reed1 + "Reed1 Desativado");
+                    ExibeReed(false,1);
+                }
+
+            }
+            if (topic.equals("eueduardoReed2")) { // Apresentada graficamente
+
+                String Reed2 = new String(message.getPayload());
+                Log.d(TAG, topic + ": " + Reed2);
+                if(Reed2.equals("um")){
+                    ExibeReed(true,2);
+                }else{
+                    ExibeReed(false,2);
+                }
+            }
+            if (topic.equals("eueduardoReed3")) { // Apresentada graficamente
+
+                String Reed3 = new String(message.getPayload());
+                Log.d(TAG, topic + ": " + Reed3);
+                if(Reed3.equals("um")){
+                    ExibeReed(true,3);
+                }else{
+                    ExibeReed(false,3);
+                }
+            }
+            if (topic.equals("eueduardoReed4")) { // Apresentada graficamente
+
+                String Reed4 = new String(message.getPayload());
+                Log.d(TAG, topic + ": " + Reed4);
+                if(Reed4.equals("um")){
+                    ExibeReed(true,4);
+                }else{
+                    ExibeReed(false,4);
+                }
+            }
+            if (topic.equals("eueduardoReed5")) { // Apresentada graficamente
+
+                String Reed5 = new String(message.getPayload());
+                Log.d(TAG, topic + ": " + Reed5);
+                if(Reed5.equals("um")){
+                    ExibeReed(true,5);
+                }else{
+                    ExibeReed(false,5);
+                }
+            }
+            if (topic.equals("eueduardoReed6")) { // Apresentada graficamente
+
+                String Reed6 = new String(message.getPayload());
+                Log.d(TAG, topic + ": " + Reed6);
+                if(Reed1.equals("um")){
+                    ExibeReed(true,6);
+                }else{
+                    ExibeReed(false,6);
+                }
             }
         }
 
@@ -137,8 +206,19 @@ private ToggleButton toggleButton;
         botaoBaixoB = (ImageView) findViewById(R.id.BaixoBid);
         botaoBaixoC = (ImageView) findViewById(R.id.BaixoCid);
         botaoBaixoD = (ImageView) findViewById(R.id.BaixoDid);
+        botaoExtra = (ImageView) findViewById(R.id.ExtraPulsoID);
+
+        Reed1 = (ImageView) findViewById(R.id.reedCimaAid);
+        Reed2 = (ImageView) findViewById(R.id.reedCimaAid);
+        Reed3 = (ImageView) findViewById(R.id.reedCimaAid);
+        Reed4 = (ImageView) findViewById(R.id.reedCimaAid);
+        Reed5 = (ImageView) findViewById(R.id.reedCimaAid);
+        Reed6 = (ImageView) findViewById(R.id.reedCimaAid);
+
         toggleButton = (ToggleButton) findViewById(R.id.ExtraID);
-        Alarme = (ImageView) findViewById(R.id.AlarmeID);
+        toggleButtonAlarme=(ToggleButton) findViewById(R.id.AlarmeToggleID);
+
+        Alarme = (ImageView) findViewById(R.id.AlarmePulsoID);
 
 
 
@@ -286,6 +366,25 @@ private ToggleButton toggleButton;
                 return true;
             }
         });
+
+        botaoExtra.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+
+
+                    //CHAMAR COMANDO MQTT DE LIGAR
+                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_LONG).show();
+                    MotoresActivity.botaocima("ExtL");
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    //CHAMAR COMANDO MQTT DE DESLIGAR
+                    MotoresActivity.botaocima("ExtD");
+                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_LONG).show();
+                }
+                return true;
+            }
+        });
+
         toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -301,6 +400,24 @@ private ToggleButton toggleButton;
                 }
             }
         });
+
+        toggleButtonAlarme.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+
+                if(isChecked){
+                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_LONG).show();
+                    MotoresActivity.botaocima("alarmL");
+                }
+                if(!isChecked){
+                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_LONG).show();
+                    MotoresActivity.botaocima("alarmD");
+                }
+            }
+        });
+
+
 
         Alarme.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -392,14 +509,23 @@ private ToggleButton toggleButton;
             if (!client.isConnected()){
                 connectMQTT();
             }
-            IMqttToken subTokenU = client.subscribe("/Umidade", qos);
-            subTokenU.setActionCallback(MqttCallBackApp);
-            IMqttToken subTokenB = client.subscribe("/Bomba", qos);
-            subTokenB.setActionCallback(MqttCallBackApp);
-            IMqttToken subTokenS = client.subscribe("/Solenoide", qos);
-            subTokenS.setActionCallback(MqttCallBackApp);
-            IMqttToken subTokenN = client.subscribe("/NivelAgua", qos);
+            IMqttToken subTokenN = client.subscribe("eueduardoCorrente", qos);
             subTokenN.setActionCallback(MqttCallBackApp);
+
+            IMqttToken subTokenU = client.subscribe("eueduardoReed1", qos);
+            subTokenU.setActionCallback(MqttCallBackApp);
+            IMqttToken subTokenB = client.subscribe("eueduardoReed2", qos);
+            subTokenB.setActionCallback(MqttCallBackApp);
+            IMqttToken subTokenS = client.subscribe("eueduardoReed3", qos);
+            subTokenS.setActionCallback(MqttCallBackApp);
+            IMqttToken subTokenA = client.subscribe("eueduardoReed4", qos);
+            subTokenA.setActionCallback(MqttCallBackApp);
+            IMqttToken subTokenG = client.subscribe("eueduardoReed5", qos);
+            subTokenG.setActionCallback(MqttCallBackApp);
+            IMqttToken subTokenZ = client.subscribe("eueduardoReed6", qos);
+            subTokenZ.setActionCallback(MqttCallBackApp);
+
+
 
         } catch (MqttException e) {
             e.printStackTrace();
@@ -432,6 +558,22 @@ private ToggleButton toggleButton;
     public void AtualizaTextoCorrente(String passaMensagem) {
         texto = (TextView) findViewById(R.id.correnteID);
         texto.setText(MainActivity.passaMensagem);
+    }
+    public void ExibeReed(boolean estado, int numeroReed) {
+        switch (numeroReed) {
+            case 1:
+                if (estado == true) {
+                    Reed1.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.redswitch));
+                    Log.d(TAG,  "Entrou na funcao ExibeReed1 recebendo true do estado");
+                } else if(estado==false){
+                    Reed1.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.fundotransparente));
+                    Log.d(TAG,  "Entrou na funcao ExibeReed1 recebendo FALSE do estado");
+                }
+            case 2:
+
+
+        }
+
     }
 
 

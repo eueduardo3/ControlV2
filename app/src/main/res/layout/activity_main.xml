@@ -29,18 +29,18 @@
         android:textOn="Relé Extra On"
         android:textOff="Relé Extra Off"
         android:checked="false"
-        android:layout_below="@+id/AlarmeID"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="41dp" />
+        android:layout_alignBottom="@+id/ExtraPulsoID"
+        android:layout_centerHorizontal="true" />
 
     <ImageView
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:id="@+id/AlarmeID"
+        android:id="@+id/AlarmePulsoID"
         android:background="@drawable/sirenvermelha"
+        android:layout_marginTop="60dp"
         android:layout_below="@+id/linearLayout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="47dp" />
+        android:layout_alignRight="@+id/linearLayout"
+        android:layout_alignEnd="@+id/linearLayout" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -69,7 +69,6 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:id="@+id/reedCimaAid"
-                android:background="@drawable/redswitch"
                 android:layout_column="0"
                 android:layout_weight="0"
                 android:adjustViewBounds="false"
@@ -98,7 +97,6 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:id="@+id/reedBaixoAid"
-                android:background="@drawable/redswitch"
                 android:layout_column="0"
                 android:adjustViewBounds="false"
                 android:foregroundGravity="center_vertical|center_horizontal"
@@ -106,7 +104,7 @@
         </LinearLayout>
 
         <Space
-            android:layout_width="30px"
+            android:layout_width="40px"
             android:layout_height="20px" />
 
         <LinearLayout
@@ -119,7 +117,6 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:id="@+id/reedCimaBid"
-                android:background="@drawable/redswitch"
                 android:layout_column="0"
                 android:layout_weight="0"
                 android:adjustViewBounds="false"
@@ -148,7 +145,6 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:id="@+id/reedBaixoBid"
-                android:background="@drawable/redswitch"
                 android:layout_column="0"
                 android:layout_weight="0"
                 android:adjustViewBounds="false"
@@ -157,7 +153,7 @@
         </LinearLayout>
 
         <Space
-            android:layout_width="30px"
+            android:layout_width="40px"
             android:layout_height="20px" />
 
         <LinearLayout
@@ -170,7 +166,6 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:id="@+id/reedCimaCid"
-                android:background="@drawable/redswitch"
                 android:layout_column="0"
                 android:layout_weight="0"
                 android:adjustViewBounds="false"
@@ -199,7 +194,6 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:id="@+id/reedBaixoCid"
-                android:background="@drawable/redswitch"
                 android:layout_column="0"
                 android:layout_weight="0"
                 android:adjustViewBounds="false"
@@ -208,7 +202,7 @@
         </LinearLayout>
 
         <Space
-            android:layout_width="30px"
+            android:layout_width="40px"
             android:layout_height="20px" />
 
         <LinearLayout
@@ -221,7 +215,6 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:id="@+id/reedCimaDid"
-                android:background="@drawable/redswitch"
                 android:layout_column="0"
                 android:layout_weight="0"
                 android:adjustViewBounds="false"
@@ -250,7 +243,6 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:id="@+id/reedBaixoDid"
-                android:background="@drawable/redswitch"
                 android:layout_column="0"
                 android:layout_weight="0"
                 android:adjustViewBounds="false"
@@ -259,5 +251,25 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New ToggleButton"
+        android:id="@+id/AlarmeToggleID"
+        android:checked="false"
+        android:textOn="Alarme On"
+        android:textOff="Alarme Off"
+        android:layout_alignTop="@+id/AlarmePulsoID"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:id="@+id/ExtraPulsoID"
+        android:background="@drawable/power"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/AlarmePulsoID"
+        android:layout_alignStart="@+id/AlarmePulsoID" />
 
 </RelativeLayout>
