@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -36,6 +37,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ToggleButton;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -63,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     public TextView texto;
     public ImageView Alarme;
     public ImageView Extra;
-
+private ToggleButton toggleButton;
     static String passaMensagem;
 
     public MqttCallback ClientCallBack = new MqttCallback() {
@@ -135,8 +137,9 @@ public class MainActivity extends AppCompatActivity {
         botaoBaixoB = (ImageView) findViewById(R.id.BaixoBid);
         botaoBaixoC = (ImageView) findViewById(R.id.BaixoCid);
         botaoBaixoD = (ImageView) findViewById(R.id.BaixoDid);
+        toggleButton = (ToggleButton) findViewById(R.id.ExtraID);
         Alarme = (ImageView) findViewById(R.id.AlarmeID);
-        Extra = (ImageView) findViewById(R.id.ExtraID);
+
 
 
         botaoCimaA.setOnTouchListener(new View.OnTouchListener() {
@@ -281,6 +284,21 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_LONG).show();
                 }
                 return true;
+            }
+        });
+        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+
+                if(isChecked){
+                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_LONG).show();
+                    MotoresActivity.botaocima("ExtL");
+                }
+                if(!isChecked){
+                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_LONG).show();
+                    MotoresActivity.botaocima("ExtD");
+                }
             }
         });
 
