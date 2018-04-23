@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
     public MqttCallback ClientCallBack = new MqttCallback() {
         @Override
         public void connectionLost(Throwable cause) {
-            Log.d(TAG,"Perda de conexão... Reconectando...");
+            Log.d(TAG, "Perda de conexão... Reconectando...");
             connectMQTT();
             assinou = false;
         }
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
             if (topic.equals("eueduardoCorrente")) { // Apresentada graficamente
 
-                passaMensagem= new String(message.getPayload());
+                passaMensagem = new String(message.getPayload());
                 Log.d(TAG, topic + ": " + passaMensagem);
                 AtualizaTextoCorrente(passaMensagem);
             }
@@ -97,12 +97,12 @@ public class MainActivity extends AppCompatActivity {
 
                 String Reed1 = new String(message.getPayload());
 
-                if(Reed1.equals("um")){
+                if (Reed1.equals("um")) {
                     Log.d(TAG, topic + ": " + Reed1 + "Reed1 ativo");
-                ExibeReed(true,1);
-                }else if(Reed1.equals("zero")){
+                    ExibeReed(true, 1);
+                } else if (Reed1.equals("zero")) {
                     Log.d(TAG, topic + ": " + Reed1 + "Reed1 Desativado");
-                    ExibeReed(false,1);
+                    ExibeReed(false, 1);
                 }
 
             }
@@ -110,57 +110,57 @@ public class MainActivity extends AppCompatActivity {
 
                 String Reed2 = new String(message.getPayload());
                 Log.d(TAG, topic + ": " + Reed2);
-                if(Reed2.equals("um")){
-                    ExibeReed(true,2);
-                }else{
-                    ExibeReed(false,2);
+                if (Reed2.equals("um")) {
+                    ExibeReed(true, 2);
+                } else {
+                    ExibeReed(false, 2);
                 }
             }
             if (topic.equals("eueduardoReed3")) { // Apresentada graficamente
 
                 String Reed3 = new String(message.getPayload());
                 Log.d(TAG, topic + ": " + Reed3);
-                if(Reed3.equals("um")){
-                    ExibeReed(true,3);
-                }else{
-                    ExibeReed(false,3);
+                if (Reed3.equals("um")) {
+                    ExibeReed(true, 3);
+                } else {
+                    ExibeReed(false, 3);
                 }
             }
             if (topic.equals("eueduardoReed4")) { // Apresentada graficamente
 
                 String Reed4 = new String(message.getPayload());
                 Log.d(TAG, topic + ": " + Reed4);
-                if(Reed4.equals("um")){
-                    ExibeReed(true,4);
-                }else{
-                    ExibeReed(false,4);
+                if (Reed4.equals("um")) {
+                    ExibeReed(true, 4);
+                } else {
+                    ExibeReed(false, 4);
                 }
             }
             if (topic.equals("eueduardoReed5")) { // Apresentada graficamente
 
                 String Reed5 = new String(message.getPayload());
                 Log.d(TAG, topic + ": " + Reed5);
-                if(Reed5.equals("um")){
-                    ExibeReed(true,5);
-                }else{
-                    ExibeReed(false,5);
+                if (Reed5.equals("um")) {
+                    ExibeReed(true, 5);
+                } else {
+                    ExibeReed(false, 5);
                 }
             }
             if (topic.equals("eueduardoReed6")) { // Apresentada graficamente
 
                 String Reed6 = new String(message.getPayload());
                 Log.d(TAG, topic + ": " + Reed6);
-                if(Reed1.equals("um")){
-                    ExibeReed(true,6);
-                }else{
-                    ExibeReed(false,6);
+                if (Reed6.equals("um")) {
+                    ExibeReed(true, 6);
+                } else if(Reed6.equals("zero")) {
+                    ExibeReed(false, 6);
                 }
             }
         }
 
         @Override
         public void deliveryComplete(IMqttDeliveryToken token) {
-            Log.d(TAG,"Entregue!");
+            Log.d(TAG, "Entregue!");
         }
     };
 
@@ -185,7 +185,6 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -201,40 +200,39 @@ public class MainActivity extends AppCompatActivity {
         botaoCimaA = (ImageView) findViewById(R.id.CimaAid);
         botaoCimaB = (ImageView) findViewById(R.id.CimaBid);
         botaoCimaC = (ImageView) findViewById(R.id.CimaCid);
-        botaoCimaD = (ImageView) findViewById(R.id.CimaDid);
+
         botaoBaixoA = (ImageView) findViewById(R.id.BaixoAid);
         botaoBaixoB = (ImageView) findViewById(R.id.BaixoBid);
         botaoBaixoC = (ImageView) findViewById(R.id.BaixoCid);
-        botaoBaixoD = (ImageView) findViewById(R.id.BaixoDid);
+
         botaoExtra = (ImageView) findViewById(R.id.ExtraPulsoID);
 
         Reed1 = (ImageView) findViewById(R.id.reedCimaAid);
-        Reed2 = (ImageView) findViewById(R.id.reedCimaAid);
-        Reed3 = (ImageView) findViewById(R.id.reedCimaAid);
-        Reed4 = (ImageView) findViewById(R.id.reedCimaAid);
-        Reed5 = (ImageView) findViewById(R.id.reedCimaAid);
-        Reed6 = (ImageView) findViewById(R.id.reedCimaAid);
+        Reed2 = (ImageView) findViewById(R.id.reedBaixoAid);
+        Reed3 = (ImageView) findViewById(R.id.reedCimaBid);
+        Reed4 = (ImageView) findViewById(R.id.reedBaixoBid);
+        Reed5 = (ImageView) findViewById(R.id.reedCimaCid);
+        Reed6 = (ImageView) findViewById(R.id.reedBaixoCid);
 
         toggleButton = (ToggleButton) findViewById(R.id.ExtraID);
-        toggleButtonAlarme=(ToggleButton) findViewById(R.id.AlarmeToggleID);
+        toggleButtonAlarme = (ToggleButton) findViewById(R.id.AlarmeToggleID);
 
         Alarme = (ImageView) findViewById(R.id.AlarmePulsoID);
-
 
 
         botaoCimaA.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
 
 
                     //CHAMAR COMANDO MQTT DE LIGAR
-                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_SHORT).show();
                     MotoresActivity.botaocima("AcL");
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     //CHAMAR COMANDO MQTT DE DESLIGAR
                     MotoresActivity.botaocima("AcD");
-                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_SHORT).show();
                 }
                 return true;
             }
@@ -243,16 +241,16 @@ public class MainActivity extends AppCompatActivity {
         botaoCimaB.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
 
 
                     //CHAMAR COMANDO MQTT DE LIGAR
-                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_SHORT).show();
                     MotoresActivity.botaocima("BcL");
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     //CHAMAR COMANDO MQTT DE DESLIGAR
                     MotoresActivity.botaocima("BcD");
-                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_SHORT).show();
                 }
                 return true;
             }
@@ -261,53 +259,36 @@ public class MainActivity extends AppCompatActivity {
         botaoCimaC.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
 
 
                     //CHAMAR COMANDO MQTT DE LIGAR
-                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_SHORT).show();
                     MotoresActivity.botaocima("CcL");
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     //CHAMAR COMANDO MQTT DE DESLIGAR
                     MotoresActivity.botaocima("CcD");
-                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_SHORT).show();
                 }
                 return true;
             }
         });
 
-        botaoCimaD.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_DOWN) {
-
-
-                    //CHAMAR COMANDO MQTT DE LIGAR
-                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_LONG).show();
-                    MotoresActivity.botaocima("DcL");
-                } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    //CHAMAR COMANDO MQTT DE DESLIGAR
-                    MotoresActivity.botaocima("DcD");
-                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_LONG).show();
-                }
-                return true;
-            }
-        });
 
         //------------
         botaoBaixoA.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
 
 
                     //CHAMAR COMANDO MQTT DE LIGAR
-                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_SHORT).show();
                     MotoresActivity.botaocima("AbL");
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     //CHAMAR COMANDO MQTT DE DESLIGAR
                     MotoresActivity.botaocima("AbD");
-                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_SHORT).show();
                 }
                 return true;
             }
@@ -316,16 +297,16 @@ public class MainActivity extends AppCompatActivity {
         botaoBaixoB.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
 
 
                     //CHAMAR COMANDO MQTT DE LIGAR
-                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_SHORT).show();
                     MotoresActivity.botaocima("BbL");
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     //CHAMAR COMANDO MQTT DE DESLIGAR
                     MotoresActivity.botaocima("BbD");
-                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_SHORT).show();
                 }
                 return true;
             }
@@ -334,52 +315,35 @@ public class MainActivity extends AppCompatActivity {
         botaoBaixoC.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
 
 
                     //CHAMAR COMANDO MQTT DE LIGAR
-                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_SHORT).show();
                     MotoresActivity.botaocima("CbL");
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     //CHAMAR COMANDO MQTT DE DESLIGAR
                     MotoresActivity.botaocima("CbD");
-                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_SHORT).show();
                 }
                 return true;
             }
         });
 
-        botaoBaixoD.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_DOWN) {
-
-
-                    //CHAMAR COMANDO MQTT DE LIGAR
-                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_LONG).show();
-                    MotoresActivity.botaocima("DbL");
-                } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    //CHAMAR COMANDO MQTT DE DESLIGAR
-                    MotoresActivity.botaocima("DbD");
-                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_LONG).show();
-                }
-                return true;
-            }
-        });
 
         botaoExtra.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
 
 
                     //CHAMAR COMANDO MQTT DE LIGAR
-                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_SHORT).show();
                     MotoresActivity.botaocima("ExtL");
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     //CHAMAR COMANDO MQTT DE DESLIGAR
                     MotoresActivity.botaocima("ExtD");
-                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_SHORT).show();
                 }
                 return true;
             }
@@ -390,12 +354,12 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
 
-                if(isChecked){
-                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_LONG).show();
+                if (isChecked) {
+                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_SHORT).show();
                     MotoresActivity.botaocima("ExtL");
                 }
-                if(!isChecked){
-                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_LONG).show();
+                if (!isChecked) {
+                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_SHORT).show();
                     MotoresActivity.botaocima("ExtD");
                 }
             }
@@ -406,32 +370,31 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
 
-                if(isChecked){
-                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_LONG).show();
+                if (isChecked) {
+                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_SHORT).show();
                     MotoresActivity.botaocima("alarmL");
                 }
-                if(!isChecked){
-                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_LONG).show();
+                if (!isChecked) {
+                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_SHORT).show();
                     MotoresActivity.botaocima("alarmD");
                 }
             }
         });
 
 
-
         Alarme.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if(event.getAction() == MotionEvent.ACTION_DOWN) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
 
 
                     //CHAMAR COMANDO MQTT DE LIGAR
-                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_SHORT).show();
                     MotoresActivity.botaocima("alarmL");
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     //CHAMAR COMANDO MQTT DE DESLIGAR
                     MotoresActivity.botaocima("alarmD");
-                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_SHORT).show();
                 }
                 return true;
             }
@@ -466,14 +429,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     // Método de incialização do cliente MQTT
-    private void initMQTT(){
-        client=new MqttAndroidClient(this.getApplicationContext(),
+    private void initMQTT() {
+        client = new MqttAndroidClient(this.getApplicationContext(),
                 "tcp://iot.eclipse.org:1883", clientId);
         client.setCallback(ClientCallBack);
     }
 
     // Inicialização do MQTT e conexão inicial
-    public static void connectMQTT(){
+    public static void connectMQTT() {
         try {
             MqttConnectOptions options = new MqttConnectOptions();
             options.setUserName("eueduardo");
@@ -506,7 +469,7 @@ public class MainActivity extends AppCompatActivity {
     public static void subscribeMQTT() {
         int qos = 1;
         try {
-            if (!client.isConnected()){
+            if (!client.isConnected()) {
                 connectMQTT();
             }
             IMqttToken subTokenN = client.subscribe("eueduardoCorrente", qos);
@@ -524,7 +487,6 @@ public class MainActivity extends AppCompatActivity {
             subTokenG.setActionCallback(MqttCallBackApp);
             IMqttToken subTokenZ = client.subscribe("eueduardoReed6", qos);
             subTokenZ.setActionCallback(MqttCallBackApp);
-
 
 
         } catch (MqttException e) {
@@ -547,7 +509,7 @@ public class MainActivity extends AppCompatActivity {
             MqttMessage message = new MqttMessage(encodedPayload);
             client.publish(topic, message);
 
-            //Toast.makeText(MainActivity.this, "publicou por mqtt", Toast.LENGTH_LONG).show();
+            //Toast.makeText(MainActivity.this, "publicou por mqtt", Toast.LENGTH_SHORT).show();
 
         } catch (UnsupportedEncodingException | MqttException e) {
             e.printStackTrace();
@@ -559,24 +521,89 @@ public class MainActivity extends AppCompatActivity {
         texto = (TextView) findViewById(R.id.correnteID);
         texto.setText(MainActivity.passaMensagem);
     }
+
     public void ExibeReed(boolean estado, int numeroReed) {
+
         switch (numeroReed) {
             case 1:
                 if (estado == true) {
                     Reed1.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.redswitch));
-                    Log.d(TAG,  "Entrou na funcao ExibeReed1 recebendo true do estado");
-                } else if(estado==false){
+                    Log.d(TAG, "Entrou na funcao ExibeReed1 recebendo true do estado");
+                    Toast.makeText(MainActivity.this, "Limite Máximo", Toast.LENGTH_SHORT).show();
+                } else if (estado == false) {
                     Reed1.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.fundotransparente));
-                    Log.d(TAG,  "Entrou na funcao ExibeReed1 recebendo FALSE do estado");
+                    Log.d(TAG, "Entrou na funcao ExibeReed1 recebendo FALSE do estado");
                 }
-            case 2:
+                break;
 
+
+            case 2:
+                if (estado == true) {
+                    Reed2.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.redswitch));
+                    Log.d(TAG, "Entrou na funcao ExibeReed2 recebendo true do estado");
+                    Toast.makeText(MainActivity.this, "Limite Máximo", Toast.LENGTH_SHORT).show();
+                } else if (estado == false) {
+                    Reed2.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.fundotransparente));
+                    Log.d(TAG, "Entrou na funcao ExibeReed2 recebendo FALSE do estado");
+                }
+                break;
+
+
+            case 3:
+                if (estado == true) {
+                    Reed3.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.redswitch));
+                    Log.d(TAG, "Entrou na funcao ExibeReed3 recebendo true do estado");
+                    Toast.makeText(MainActivity.this, "Limite Máximo", Toast.LENGTH_SHORT).show();
+                } else if (estado == false) {
+                    Reed3.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.fundotransparente));
+                    Log.d(TAG, "Entrou na funcao ExibeReed3 recebendo FALSE do estado");
+                }
+                break;
+
+            case 4:
+                if (estado == true) {
+                    Reed4.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.redswitch));
+                    Log.d(TAG, "Entrou na funcao ExibeReed4 recebendo true do estado");
+                    Toast.makeText(MainActivity.this, "Limite Máximo", Toast.LENGTH_SHORT).show();
+                } else if (estado == false) {
+                    Reed4.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.fundotransparente));
+                    Log.d(TAG, "Entrou na funcao ExibeReed4 recebendo FALSE do estado");
+                }
+                break;
+
+            case 5:
+                if (estado == true) {
+                    Reed5.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.redswitch));
+                    Log.d(TAG, "Entrou na funcao ExibeReed5 recebendo true do estado");
+                    Toast.makeText(MainActivity.this, "Limite Máximo", Toast.LENGTH_SHORT).show();
+                } else if (estado == false) {
+                    Reed5.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.fundotransparente));
+                    Log.d(TAG, "Entrou na funcao ExibeReed5 recebendo FALSE do estado");
+                }
+                break;
+
+            case 6:
+                if (estado == true) {
+                    Reed6.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.redswitch));
+                    Log.d(TAG, "Entrou na funcao ExibeReed6 recebendo true do estado");
+                    Toast.makeText(MainActivity.this, "Limite Máximo", Toast.LENGTH_SHORT).show();
+                } else if (estado == false) {
+                    Reed6.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.fundotransparente));
+                    Log.d(TAG, "Entrou na funcao ExibeReed6 recebendo FALSE do estado");
+                }
+                break;
+
+
+            default: Log.d(TAG, " Deu problema no Reed");
+                break;
 
         }
 
+
     }
-
-
-
-
 }
+
+
+
+
+

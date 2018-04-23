@@ -104,7 +104,7 @@
         </LinearLayout>
 
         <Space
-            android:layout_width="40px"
+            android:layout_width="70px"
             android:layout_height="20px" />
 
         <LinearLayout
@@ -153,7 +153,7 @@
         </LinearLayout>
 
         <Space
-            android:layout_width="40px"
+            android:layout_width="70px"
             android:layout_height="20px" />
 
         <LinearLayout
@@ -201,53 +201,12 @@
                 android:layout_gravity="center_horizontal" />
         </LinearLayout>
 
-        <Space
-            android:layout_width="40px"
-            android:layout_height="20px" />
-
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:baselineAligned="false" >
 
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:id="@+id/reedCimaDid"
-                android:layout_column="0"
-                android:layout_weight="0"
-                android:adjustViewBounds="false"
-                android:foregroundGravity="center_vertical|center_horizontal"
-                android:layout_gravity="center_horizontal" />
-
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:id="@+id/CimaDid"
-                android:background="@drawable/cimaroxo"
-                android:layout_gravity="center_vertical" />
-
-            <Space
-                android:layout_width="20px"
-                android:layout_height="20px" />
-
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:id="@+id/BaixoDid"
-                android:background="@drawable/baixoroxo"
-                android:layout_gravity="center_horizontal" />
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:id="@+id/reedBaixoDid"
-                android:layout_column="0"
-                android:layout_weight="0"
-                android:adjustViewBounds="false"
-                android:foregroundGravity="center_vertical|center_horizontal"
-                android:layout_gravity="center_horizontal" />
         </LinearLayout>
 
     </LinearLayout>
