@@ -1,17 +1,14 @@
 package control.studio.com.control;
 
-import android.app.Activity;
-import android.app.NotificationManager;
-import android.app.TaskStackBuilder;
-import android.content.Intent;
+
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.app.NotificationCompat;
+
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
+
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -30,31 +27,19 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import java.io.UnsupportedEncodingException;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
-import android.os.Bundle;
-import android.app.Activity;
-import android.util.Log;
-import android.view.View;
 import android.widget.ToggleButton;
 
 public class MainActivity extends AppCompatActivity {
 
     // Declarações de Campos EditText
-    private EditText UMaxima, UMinima;
-    private ProgressBar pB;
-    private ImageView iV;
-    private TextView uText;
+
     // Declaração para as mensagens de depuração
     private static final String TAG = MainActivity.class.getSimpleName();
     // Declarações e inicializações para o MQTT
     public String clientId = MqttClient.generateClientId();
     public static MqttAndroidClient client;
     static boolean assinou = false;
-    private ImageView botaoMotores;
-    private ImageView botaoAlarme;
     public ImageView botaoCimaA;
     public ImageView botaoCimaB;
     public ImageView botaoCimaC;
@@ -193,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
 
         initMQTT();
         connectMQTT();
-        //startNotifications();
+
 
 //------------------------------------------------------
 //tentativa de clicar um botao que ao clicar manda o comando de ligar, ao solta-lo manda o comando de desligar
@@ -228,10 +213,10 @@ public class MainActivity extends AppCompatActivity {
 
                     //CHAMAR COMANDO MQTT DE LIGAR
                     Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_SHORT).show();
-                    MotoresActivity.botaocima("AcL");
+                    MainActivity.botaocima("AcL");
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     //CHAMAR COMANDO MQTT DE DESLIGAR
-                    MotoresActivity.botaocima("AcD");
+                    MainActivity.botaocima("AcD");
                     Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_SHORT).show();
                 }
                 return true;
@@ -246,10 +231,10 @@ public class MainActivity extends AppCompatActivity {
 
                     //CHAMAR COMANDO MQTT DE LIGAR
                     Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_SHORT).show();
-                    MotoresActivity.botaocima("BcL");
+                    MainActivity.botaocima("BcL");
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     //CHAMAR COMANDO MQTT DE DESLIGAR
-                    MotoresActivity.botaocima("BcD");
+                    MainActivity.botaocima("BcD");
                     Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_SHORT).show();
                 }
                 return true;
@@ -264,10 +249,10 @@ public class MainActivity extends AppCompatActivity {
 
                     //CHAMAR COMANDO MQTT DE LIGAR
                     Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_SHORT).show();
-                    MotoresActivity.botaocima("CcL");
+                    MainActivity.botaocima("CcL");
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     //CHAMAR COMANDO MQTT DE DESLIGAR
-                    MotoresActivity.botaocima("CcD");
+                    MainActivity.botaocima("CcD");
                     Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_SHORT).show();
                 }
                 return true;
@@ -284,10 +269,10 @@ public class MainActivity extends AppCompatActivity {
 
                     //CHAMAR COMANDO MQTT DE LIGAR
                     Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_SHORT).show();
-                    MotoresActivity.botaocima("AbL");
+                    MainActivity.botaocima("AbL");
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     //CHAMAR COMANDO MQTT DE DESLIGAR
-                    MotoresActivity.botaocima("AbD");
+                    MainActivity.botaocima("AbD");
                     Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_SHORT).show();
                 }
                 return true;
@@ -302,10 +287,10 @@ public class MainActivity extends AppCompatActivity {
 
                     //CHAMAR COMANDO MQTT DE LIGAR
                     Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_SHORT).show();
-                    MotoresActivity.botaocima("BbL");
+                    MainActivity.botaocima("BbL");
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     //CHAMAR COMANDO MQTT DE DESLIGAR
-                    MotoresActivity.botaocima("BbD");
+                    MainActivity.botaocima("BbD");
                     Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_SHORT).show();
                 }
                 return true;
@@ -320,10 +305,10 @@ public class MainActivity extends AppCompatActivity {
 
                     //CHAMAR COMANDO MQTT DE LIGAR
                     Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_SHORT).show();
-                    MotoresActivity.botaocima("CbL");
+                    MainActivity.botaocima("CbL");
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     //CHAMAR COMANDO MQTT DE DESLIGAR
-                    MotoresActivity.botaocima("CbD");
+                    MainActivity.botaocima("CbD");
                     Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_SHORT).show();
                 }
                 return true;
@@ -339,10 +324,10 @@ public class MainActivity extends AppCompatActivity {
 
                     //CHAMAR COMANDO MQTT DE LIGAR
                     Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_SHORT).show();
-                    MotoresActivity.botaocima("ExtL");
+                    MainActivity.botaocima("ExtL");
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     //CHAMAR COMANDO MQTT DE DESLIGAR
-                    MotoresActivity.botaocima("ExtD");
+                    MainActivity.botaocima("ExtD");
                     Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_SHORT).show();
                 }
                 return true;
@@ -356,11 +341,11 @@ public class MainActivity extends AppCompatActivity {
 
                 if (isChecked) {
                     Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_SHORT).show();
-                    MotoresActivity.botaocima("ExtL");
+                    MainActivity.botaocima("ExtL");
                 }
                 if (!isChecked) {
                     Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_SHORT).show();
-                    MotoresActivity.botaocima("ExtD");
+                    MainActivity.botaocima("ExtD");
                 }
             }
         });
@@ -372,11 +357,11 @@ public class MainActivity extends AppCompatActivity {
 
                 if (isChecked) {
                     Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_SHORT).show();
-                    MotoresActivity.botaocima("alarmL");
+                    MainActivity.botaocima("alarmL");
                 }
                 if (!isChecked) {
                     Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_SHORT).show();
-                    MotoresActivity.botaocima("alarmD");
+                    MainActivity.botaocima("alarmD");
                 }
             }
         });
@@ -390,10 +375,10 @@ public class MainActivity extends AppCompatActivity {
 
                     //CHAMAR COMANDO MQTT DE LIGAR
                     Toast.makeText(MainActivity.this, "Ligou", Toast.LENGTH_SHORT).show();
-                    MotoresActivity.botaocima("alarmL");
+                    MainActivity.botaocima("alarmL");
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     //CHAMAR COMANDO MQTT DE DESLIGAR
-                    MotoresActivity.botaocima("alarmD");
+                    MainActivity.botaocima("alarmD");
                     Toast.makeText(MainActivity.this, "Desligou", Toast.LENGTH_SHORT).show();
                 }
                 return true;
@@ -401,29 +386,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-//------------------------------------------------------
-
-//        botaoMotores = (ImageView) findViewById(R.id.motoresID);
-//        botaoAlarme = (ImageView) findViewById(R.id.alarmeID);
-//
-//        botaoMotores.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //startActivity(new Intent(MainActivity.this, MotoresActivity.class));
-//
-//                Intent intent = new Intent(MainActivity.this, MotoresActivity.class);
-//                intent.putExtra("nome", passaMensagem + " Amperes");
-//                startActivity(intent);
-//            }
-//
-//        });
-//
-//        botaoAlarme.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this, AlarmeActivity.class));
-//            }
-//        });
 
     }
 
@@ -449,21 +411,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Cria as classes necessárias para notificações: Intent, PendingIntent e acessa o mNotificationManager
-    /*private void startNotifications(){
-        Intent resultIntent = new Intent(this, MainActivity.class);
-        stackBuilder.addParentStack(MainActivity.class);
-        stackBuilder.addNextIntent(resultIntent);
-        PendingIntent resultPendingIntent =
-                stackBuilder.getPendingIntent(
-                        0,
-                        PendingIntent.FLAG_UPDATE_CURRENT
-                );
-        mBuilder.setContentIntent(resultPendingIntent);
-        mNotificationManager =
-                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-    }*/
 
     // Assina as mensagens MQTT desejadas
     public static void subscribeMQTT() {
